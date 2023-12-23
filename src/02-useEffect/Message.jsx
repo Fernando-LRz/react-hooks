@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 
-
 const Message = () => {
 
     const [ coords, setCoords ] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         // console.log('Message mounted');
-
         const onMouseMove = ({ x, y }) => {
             setCoords({ x, y });
         }
@@ -16,7 +14,6 @@ const Message = () => {
     
       return () => {
         // console.log('Message unmounted');
-
         window.removeEventListener( 'mousemove', onMouseMove );
       }
 

@@ -1,4 +1,4 @@
-import useForm from '../hooks/useForm';
+import { useForm } from '../hooks/useForm';
 
 const FormWithCustomHook = () => {
 
@@ -44,7 +44,7 @@ const FormWithCustomHook = () => {
                 className='btn btn-primary mt-2'
                 onClick={ onResetForm }
             >
-                Resetear
+                Reset
             </button>
 
         </>

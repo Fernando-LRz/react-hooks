@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-
 const CounterApp = () => {
 
     const [ state, setState ] = useState({

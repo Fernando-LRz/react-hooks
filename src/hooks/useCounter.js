@@ -24,5 +24,3 @@ export const useCounter = ( initialValue = 10 ) => {
         reset
     };
 };
-
-export default useCounter;
