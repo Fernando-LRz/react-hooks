@@ -1,23 +1,23 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { UserContext } from '../../src/09-useContext/context/UserContext';
-import HomePage from '../../src/09-useContext/HomePage';
+import LoginPage from '../../src/09-useContext/LoginPage';
 
-describe('<HomePage /> tests', () => {
-    
+describe('<LoginPage /> tests', () => {
+
     const user = {
         id: 17,
         name: 'Fernando',
         email: 'fernando@test.com'
     };
-    
+
     test('should render the component without an user', () => {
 
         render(
             <UserContext.Provider
                 value={{ user: null }}
             >
-                <HomePage />
+                <LoginPage />
             </UserContext.Provider>
         );
 
@@ -25,20 +25,21 @@ describe('<HomePage /> tests', () => {
         expect( preTag.innerHTML ).toBe('null');
     });
 
-    test('should render the component with an user', () => {
-
+    test('should execute the authenticate function when clicking the button', () => {
+        
+        const authenticateMock = jest.fn();
+        
         render(
             <UserContext.Provider
-                value={{ user }}
+                value={{ user, authenticate: authenticateMock }}
             >
-                <HomePage />
+                <LoginPage />
             </UserContext.Provider>
         );
 
-        const preTag = screen.getByLabelText('pre');
+        const button = screen.getByRole('button');
+        fireEvent.click( button );
 
-        expect( preTag.innerHTML ).toContain( user.id.toString() );
-        expect( preTag.innerHTML ).toContain( user.name );
-        expect( preTag.innerHTML ).toContain( user.email );
+        expect( authenticateMock ).toHaveBeenCalledWith( user );
     });
 });
