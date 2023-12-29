@@ -1,7 +1,6 @@
 import { act, renderHook } from '@testing-library/react';
 import { useForm } from '../../src/hooks/useForm';
 
-
 describe('useForm tests', () => { 
 
     const initialForm = {
